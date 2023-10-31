@@ -4,15 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Expense Tracker</title>
   </head>
   <body>
     <div class="container">
-      <div class="expense">
-        <div class="expense-type"></div>
-        <div class="expense-Description"></div>
-        <div class="expense-amount"></div>
-      </div>
+      <form action="" id="expense-container">
+        <select name="type" id="" required>
+          <option value="income">Income</option>
+          <option value="house">Housing</option>
+          <option value="transport">Transportation</option>
+          <option value="food">Food</option>
+          <option value="entertainment">Entertainment</option>
+        </select>
+        <input type="text" maxlength="15" required />
+        <input
+          type="text"
+          name="amount"
+          placeholder="£ 0.00"
+          value="2"
+          required
+        />
+        <button class="a">Add</button>
+      </form>
+
       <div class="summary">
         <div class="summary-income"></div>
         <div class="summary-expense"></div>

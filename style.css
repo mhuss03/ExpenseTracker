@@ -5,3 +5,24 @@
   --violet-web-color: #ff84e8ff;
   --emerald: #48bf84ff;
 }
+
+/* * {
+  padding: 0;
+  margin: 0;
+} */
+
+/*      *** Expense ***      */
+
+#expense-container {
+  width: 400px;
+  height: 100px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#expense-container > * {
+  width: 100px;
+  border: 2px solid coral;
+}
