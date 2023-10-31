@@ -10,30 +10,32 @@
     <div class="container">
       <form action="" id="expense-container">
         <select name="type" id="" required>
+          <option value="" disabled selected>Select Expense Type</option>
           <option value="income">Income</option>
           <option value="house">Housing</option>
           <option value="transport">Transportation</option>
           <option value="food">Food</option>
           <option value="entertainment">Entertainment</option>
         </select>
-        <input type="text" maxlength="15" required />
+        <input type="text" name="desc" maxlength="15" autocomplete="off" />
         <input
           type="text"
           name="amount"
           placeholder="£ 0.00"
-          value="2"
-          required
+          autocomplete="off"
         />
         <button class="a">Add</button>
       </form>
 
-      <div class="summary">
+      <div class="summary-container">
         <div class="summary-income"></div>
         <div class="summary-expense"></div>
         <div class="summary-saving"></div>
       </div>
-      <div class="transactions"></div>
-      <div class="chart"></div>
+      <div class="chart-container">
+        <div class="chart"></div>
+      </div>
+      <div class="transaction-container"></div>
     </div>
 
     <script src="index.js"></script>
