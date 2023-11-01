@@ -6,25 +6,30 @@
   --emerald: #48bf84ff;
 }
 
-/* * {
+* {
   padding: 0;
   margin: 0;
-} */
-
-/*      *** Expense ***      */
-
-#expense-container {
-  width: 400px;
-  height: 100px;
-  background-color: var(--cardinal);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
-#expense-container > * {
-  width: 100px;
-  border: 2px solid black;
+/*      *** Expense ***      */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+expense-contain {
+  width: 640px;
+  height: 160px;
+}
+
+.expense-contain * {
+  width: 160px;
+  height: 40px;
+}
+
+.test {
+  width: 160px;
+  height: 40px;
 }
 
 .summary-container {
