@@ -50,6 +50,8 @@ form.onsubmit = (e) => {
 
   summaryReport();
 
+  chart();
+
   formDesc.innerText = "";
   formAmount.innerText = "";
 };
@@ -71,17 +73,11 @@ function summaryReport() {
       : (expense += Number(element.amount));
   });
 
-  const sumIncome = document.createElement("h3");
-  sumIncome.innerText = income;
-
-  const sumExpense = document.createElement("h3");
-  sumExpense.innerText = expense;
-
   let save = income - expense;
-  const sumSave = document.createElement("h3");
-  sumSave.innerText = save;
 
-  summary.append(sumIncome, sumExpense, sumSave);
+  summaryIncome.innerText = income;
+  summaryExpense.innerText = expense;
+  summarysumSave.innerText = save;
 }
 
 summaryReport();
@@ -130,5 +126,3 @@ function chart() {
   console.log(str);
   console.log(num);
 }
-
-chart();

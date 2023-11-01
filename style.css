@@ -17,14 +17,15 @@
   flex-wrap: wrap;
 }
 
-expense-contain {
-  width: 640px;
-  height: 160px;
+.expense-contain {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .expense-contain * {
   width: 160px;
   height: 40px;
+  box-sizing: border-box;
 }
 
 .test {
@@ -33,10 +34,30 @@ expense-contain {
 }
 
 .summary-container {
-  width: 300px;
-  height: 700px;
   background-color: var(--ut-orange);
+  text-align: center;
+  font: 2em sans-serif;
+  display: flex;
 }
+
+.summary-container * {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+
+.summary-income {
+  background-color: lightseagreen;
+}
+
+.summary-expense {
+  background-color: lightgreen;
+}
+
+.summary-saving{
+  background-color: lightcyan;
+}
+
 
 .chart-container {
   width: 500px;
