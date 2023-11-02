@@ -9,33 +9,14 @@ const expenseData = JSON.parse(localStorage.getItem("expense")) || [];
 
 const ch = document.querySelector(".chart");
 
-/*      *** Adding Data to Local Storage ***      */
+const color = ["d11149ff", "2b4162ff", "ff8811ff", "ff84e8ff", "48bf84ff"];
 
+/*      *** Adding Data to Local Storage ***      */
 function storeData(type, desc, amount) {
   expenseData.push({ type, desc, amount });
 
   localStorage.setItem("expense", JSON.stringify(expenseData));
 }
-
-/*      *** Transactions ***      */
-
-function addTransaction(type, desc, amount) {
-  const div = document.createElement("div");
-  const expenseType = document.createElement("h2");
-  const expenseDesc = document.createElement("h2");
-  const expenseAmount = document.createElement("h2");
-
-  expenseType.innerText = type;
-  expenseDesc.innerText = desc;
-  expenseAmount.innerText = amount;
-
-  div.append(expenseType, expenseDesc, amount);
-  transactionContainer.appendChild(div);
-}
-
-expenseData.forEach((e) => {
-  addTransaction(e.type, e.desc, e.amount);
-});
 
 form.onsubmit = (e) => {
   e.preventDefault();
@@ -52,9 +33,29 @@ form.onsubmit = (e) => {
 
   chart();
 
-  formDesc.innerText = "";
-  formAmount.innerText = "";
+  formType.value = "";
+  formDesc.value = "";
+  formAmount.value = "";
 };
+
+/*      *** Transactions ***      */
+function addTransaction(type, desc, amount) {
+  const div = document.createElement("tr");
+  const expenseType = document.createElement("td");
+  const expenseDesc = document.createElement("td");
+  const expenseAmount = document.createElement("td");
+
+  expenseType.innerText = type;
+  expenseDesc.innerText = desc;
+  expenseAmount.innerText = ` £ ${amount}`;
+
+  div.append(expenseType, expenseDesc, expenseAmount);
+  transactionContainer.appendChild(div);
+}
+
+expenseData.forEach((e) => {
+  addTransaction(e.type, e.desc, e.amount);
+});
 
 /*      *** Summary ***      */
 
@@ -68,61 +69,44 @@ function summaryReport() {
   let expense = 0;
 
   expenseData.forEach((element) => {
-    element.type === "income"
+    element.type === "Income"
       ? (income += Number(element.amount))
       : (expense += Number(element.amount));
   });
 
   let save = income - expense;
 
-  summaryIncome.innerText = income;
-  summaryExpense.innerText = expense;
-  summarysumSave.innerText = save;
+  summaryIncome.innerHTML = `<p style="color:#2d68d3">£ ${income}</p><br><h4>Income</h4>`;
+  summaryExpense.innerHTML = `<p style="color:#ad1119 ">£ ${expense}</p><br><h4>Expenses</h4>`;
+  summarysumSave.innerHTML = `<p style="color:#${
+    save < 0 ? "DF2E38" : "5D9C59"
+  } ">£ ${save}</p><br><h4>Savings</h4>`;
 }
 
 summaryReport();
 
 /*      *** Chart ***      */
 
-// create a string that has a color, begin ratio end ratio
-
-const color = ["ff8811ff", "2b4162ff", "d11149ff", "ff84e8ff", "48bf84ff"];
-
-// background: conic-gradient(
-//   red 0% 10%
-//   blue 10 50
-//   green 50 100
-// )
-
 function chart() {
-  let num = [];
-  expenseData.forEach((element) => {
-    num.push(Number(element.amount));
-  });
-  num.sort(function (a, b) {
-    return a - b;
-  });
+  const num = expenseData
+    .map((element) => Number(element.amount))
+    .sort((a, b) => a - b);
+
+  const sum = num.reduce((acc, current) => acc + current, 0);
 
   let str = ``;
-  let sum = num.reduce((p, c) => {
-    return p + c;
-  }, 0);
 
   for (let i = 0; i < num.length; i++) {
-    if (i !== 0) {
-      let ratioPrev = Math.round((num[i - 1] / sum) * 10000) / 100;
-      let ratioCurrent = Math.round((num[i] / sum) * 10000) / 100 + ratioPrev;
-
-      i != num.length - 1
-        ? (str += `#${color[i]} ${ratioPrev}% ${ratioCurrent}%, `)
-        : (str += `#${color[i]} ${ratioPrev}% ${ratioCurrent}%`);
-    } else {
-      let ratioCurrent = Math.round((num[i] / sum) * 10000) / 100;
-      str += `#${color[i]} 0% ${ratioCurrent}%, `;
-    }
+    const ratioPrev =
+      i === 0 ? 0 : Math.round((num[i - 1] / sum) * 10000) / 100;
+    const ratioCurrent = Math.round((num[i] / sum) * 10000) / 100 + ratioPrev;
+    str += `#${color[i]} ${ratioPrev}% ${ratioCurrent}%${
+      i !== num.length - 1 ? ", " : " "
+    }`;
   }
   ch.style.background = `conic-gradient(${str})`;
-
   console.log(str);
   console.log(num);
 }
+
+chart();
