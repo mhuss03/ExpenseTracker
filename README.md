@@ -16,4 +16,5 @@ The Expense Tracker is a simple web application designed to help you manage and 
 
 # Preview
 
-![Project Preview]([https://github.com/yourusername/yourrepository/raw/main/images/logo.png](https://github.com/mhuss03/ExpenseTracker/blob/main/Preview.PNG)https://github.com/mhuss03/ExpenseTracker/blob/main/Preview.PNG)
+![Project Preview](https://github.com/mhuss03/ExpenseTracker/blob/main/Preview.PNG?raw=true)
+
