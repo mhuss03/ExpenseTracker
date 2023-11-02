@@ -7,14 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <title>Expense Tracker</title>
   </head>
   <body>
     <div class="container">
-      <h1 class="header">Expense Tracker</h1>
+      <h1 class="header">Expense<br />Tracker</h1>
       <form action="" class="expense-contain" id="expense-container">
         <select class="input" name="type" id="" required>
           <option value="" disabled selected>Select Expense Type</option>
@@ -46,9 +46,12 @@
       <div class="chart-container">
         <div class="chart"></div>
       </div>
-      <table class="transaction-container"></table>
-      <div class="back"></div>
-      <div class="back1"></div>
+      <table class="transaction-container">
+        <th></th>
+        <th>Expense Type</th>
+        <th>Description</th>
+        <th>Amount</th>
+      </table>
     </div>
 
     <script src="index.js"></script>

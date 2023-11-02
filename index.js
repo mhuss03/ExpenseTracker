@@ -9,7 +9,20 @@ const expenseData = JSON.parse(localStorage.getItem("expense")) || [];
 
 const ch = document.querySelector(".chart");
 
-const color = ["d11149ff", "2b4162ff", "ff8811ff", "ff84e8ff", "48bf84ff"];
+const color = [
+  "004358",
+  "1f8a70",
+  "bedb39",
+  "ffe11a",
+  "fd7400",
+  "dc3522",
+  "d9cb9e",
+  "374140",
+  "bd4932",
+  "ea2e49",
+  "4c1b1b",
+  "2f2933",
+];
 
 /*      *** Adding Data to Local Storage ***      */
 function storeData(type, desc, amount) {
@@ -41,6 +54,7 @@ form.onsubmit = (e) => {
 /*      *** Transactions ***      */
 function addTransaction(type, desc, amount) {
   const div = document.createElement("tr");
+  const des = document.createElement("td");
   const expenseType = document.createElement("td");
   const expenseDesc = document.createElement("td");
   const expenseAmount = document.createElement("td");
@@ -49,7 +63,9 @@ function addTransaction(type, desc, amount) {
   expenseDesc.innerText = desc;
   expenseAmount.innerText = ` £ ${amount}`;
 
-  div.append(expenseType, expenseDesc, expenseAmount);
+  des.classList.add("legend");
+
+  div.append(des, expenseType, expenseDesc, expenseAmount);
   transactionContainer.appendChild(div);
 }
 
@@ -76,8 +92,8 @@ function summaryReport() {
 
   let save = income - expense;
 
-  summaryIncome.innerHTML = `<p style="color:#2d68d3">£ ${income}</p><br><h4>Income</h4>`;
-  summaryExpense.innerHTML = `<p style="color:#ad1119 ">£ ${expense}</p><br><h4>Expenses</h4>`;
+  summaryIncome.innerHTML = `<p style="color:#6B8EAF">£ ${income}</p><br><h4>Income</h4>`;
+  summaryExpense.innerHTML = `<p style="color:#973e5d">£ ${expense}</p><br><h4>Expenses</h4>`;
   summarysumSave.innerHTML = `<p style="color:#${
     save < 0 ? "DF2E38" : "5D9C59"
   } ">£ ${save}</p><br><h4>Savings</h4>`;
@@ -95,6 +111,7 @@ function chart() {
   const sum = num.reduce((acc, current) => acc + current, 0);
 
   let str = ``;
+  const type = document.querySelectorAll(".legend");
 
   for (let i = 0; i < num.length; i++) {
     const ratioPrev =
@@ -103,6 +120,10 @@ function chart() {
     str += `#${color[i]} ${ratioPrev}% ${ratioCurrent}%${
       i !== num.length - 1 ? ", " : " "
     }`;
+
+    type.forEach((element, j) => {
+      element.style.backgroundColor = `#${color[j]}`;
+    });
   }
   ch.style.background = `conic-gradient(${str})`;
   console.log(str);

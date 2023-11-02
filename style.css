@@ -1,49 +1,39 @@
 :root {
-  --main: #002f2f;
-  --side: #2f0000;
-  --third: #efecca;
-  --fourth: #046380;
-  --fifth: #802104;
-  --sixth: #cacdef;
+  --main: #282f3c;
+  --accent: #161923;
+  --text: #d7dfef;
 }
 
 body {
+  background-color: #1e2631;
   font-family: "Montserrat", sans-serif;
-  color: var(--main);
-  margin: 0;
+  overflow-y: hidden;
 }
 
 * {
   padding: 0;
-  margin: 0;
+  margin: 0.5rem;
   box-sizing: border-box;
+  border-radius: 1rem;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 1.5fr 1.5fr 1fr;
+  grid-template-rows: 1fr 3fr;
   height: 100vh;
 }
 
-.back {
-  background-color: var(--third);
-  grid-area: 1 / 1 / 3 / 2;
-  z-index: -1;
-}
-
 .header {
-  color: var(--main);
+  background-color: var(--accent);
+  color: #fff;
   grid-area: 1 / 1 / 2 / 2;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3.5rem;
   letter-spacing: 2px;
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
-  background-color: var(--third);
-  padding-top: 2.2rem;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
+  padding-top: 2rem;
 }
 
 .summary-container {
@@ -53,12 +43,10 @@ body {
 }
 
 .summary {
-  background-color: white;
   width: 100%;
   height: 70%;
-  margin: 1rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 1.5rem 1rem;
+  background-color: var(--main);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,64 +56,68 @@ body {
 .summary p {
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 0;
 }
 .summary h4 {
   font-size: 1rem;
+  color: white;
   letter-spacing: 2px;
   font-weight: normal;
-  margin: 0;
   text-transform: capitalize;
 }
 
 .transaction-container {
+  background-color: var(--main);
   grid-area: 2 / 1 / 3 / 2;
-  background-color: var(--third);
-  margin: 2rem;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 10px;
   border: 5px solid var(--main);
   box-shadow: 0 4px 6px var(--main);
   text-align: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.transaction-container th {
+  height: 1rem;
 }
 
 .transaction-container td {
-  color: var(--main);
-
-  font: bold 1.2rem;
-  font-weight: 600;
+  color: var(--text);
   letter-spacing: 1.25px;
-  padding: 10px;
 }
 
-.transaction-container tr:nth-child(even) td {
-  color: var(--side);
+.legend {
+  width: 4rem;
+  height: auto;
 }
 
 .expense-contain {
   grid-area: 2 / 3 / 3 / 4;
-  margin-right: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 8rem;
+  background-color: var(--main);
+  margin-bottom: 3rem;
 }
 
 .input {
-  background-color: var(--third);
+  background-color: var(--text);
   color: var(--fourth);
   width: 60%;
   height: 10%;
   margin: 0.5rem;
   padding-left: 10px;
-  border: transparent;
   box-sizing: border-box;
-  border: 2px solid var(--fourth);
+  border-radius: 0;
+  border: 2px solid var(--accent);
 }
 
 .button {
-  background-color: var(--main);
-  color: var(--third);
+  background-color: var(--accent);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1.5px;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -135,14 +127,17 @@ body {
 }
 
 .button:hover {
+  background-color: #384b6c;
 }
 
 .chart-container {
+  background-color: var(--main);
   grid-area: 2 / 2 / 3 / 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .chart {
