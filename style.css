@@ -111,6 +111,8 @@ body {
   box-sizing: border-box;
   border-radius: 0;
   border: 2px solid var(--accent);
+  letter-spacing: 1.2px;
+  font-size: 0.9rem;
 }
 
 .button {
