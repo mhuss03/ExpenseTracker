@@ -106,7 +106,7 @@ summaryReport();
 function chart() {
   const num = expenseData
     .map((element) => Number(element.amount))
-    .sort((a, b) => a - b);
+    .sort((a, b) => b - a);
 
   const sum = num.reduce((acc, current) => acc + current, 0);
 
@@ -121,13 +121,14 @@ function chart() {
       i !== num.length - 1 ? ", " : " "
     }`;
 
-    type.forEach((element, j) => {
-      element.style.backgroundColor = `#${color[j]}`;
+    type.forEach((element, i) => {
+      element.style.backgroundColor = `#${color[i]}`;
     });
   }
   ch.style.background = `conic-gradient(${str})`;
   console.log(str);
   console.log(num);
+  console.log(sum);
 }
 
 chart();
