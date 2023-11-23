@@ -127,9 +127,6 @@ function chart() {
     });
   }
   ch.style.background = `conic-gradient(${str})`;
-  console.log(str);
-  console.log(num);
-  console.log(sum);
 }
 
 chart();
