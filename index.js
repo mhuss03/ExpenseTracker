@@ -112,15 +112,16 @@ function chart() {
 
   let str = ``;
   const type = document.querySelectorAll(".legend");
+  let ratiosum = 0;
 
   for (let i = 0; i < num.length; i++) {
     const ratioPrev =
       i === 0 ? 0 : Math.round((num[i - 1] / sum) * 10000) / 100;
-    const ratioCurrent = Math.round((num[i] / sum) * 10000) / 100 + ratioPrev;
-    str += `#${color[i]} ${ratioPrev}% ${ratioCurrent}%${
+    ratiosum += ratioPrev;
+    const ratioCurrent = Math.round((num[i] / sum) * 10000) / 100;
+    str += `#${color[i]} ${ratiosum}% ${ratioCurrent + ratiosum}%${
       i !== num.length - 1 ? ", " : " "
     }`;
-
     type.forEach((element, i) => {
       element.style.backgroundColor = `#${color[i]}`;
     });
